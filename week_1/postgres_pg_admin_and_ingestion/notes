@@ -1,0 +1,64 @@
+************
+Lesson 1.2.2
+************
+
+N: You accidentialy deleted your notes for the first part. :(
+
+Here are the notes again:
+
+N: We first ran the postgres database locally using docker
+
+docker run -it \
+  -e POSTGRES_USER="root" \
+  -e POSTGRES_PASSWORD="root" \
+  -e POSTGRES_DB="ny_taxi" \
+  -v $(pwd)/ny_taxi_postgres_data:/var/lib/postgresql/data \
+  -p 5432:5432 \
+  postgres:13
+
+N: Then we used the CLI library to coonect to it
+
+pgcli -h localhost -p 5432 -u root -d ny_taxi
+
+N: Then we installed jupyter and ran jupyter notebook locallt
+
+jupyter notebook
+
+N: From the notebook 
+-we used several python liblraries to load the NY taxi data table from a local csv (which we got here: https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz), 
+-looked at the data a little bit, 
+-then created a schema for the database and created a table in postgres (using DDL - data definition langage), 
+-then loaded the data into the database in chunks
+-more in the ipyth notebook "ingesting_taxi_data.ipynb"
+
+************
+Lesson 1.2.3
+************
+
+N: since pgcli is just a command line interface we tried out PGAdmin to operate with our local PG database
+
+N: To run two containers (one for postgres and the other one for pgadmin) we link them via docker networks
+
+docker network create pg-network
+
+Then we run one container for postgres (in pg-network)
+
+docker run -it \
+  -e POSTGRES_USER="root" \
+  -e POSTGRES_PASSWORD="root" \
+  -e POSTGRES_DB="ny_taxi" \
+  -v $(pwd)/ny_taxi_postgres_data:/var/lib/postgresql/data \
+  -p 5432:5432 \
+  --network=pg-network \
+  --name pg-database \
+  postgres:13
+
+and then we run another container for pgadmin (in pg-network)
+
+docker run -it \
+  -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
+  -e PGADMIN_DEFAULT_PASSWORD="root" \
+  -p 8080:80 \
+  --network=pg-network \
+  --name pgadmin-2 \
+  dpage/pgadmin4

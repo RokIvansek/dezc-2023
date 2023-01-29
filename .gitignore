@@ -1,0 +1,4 @@
+getting-started/*
+postgres_pg_admin_and_ingestion/ny_taxi_postgres_data/*
+postgres_pg_admin_and_ingestion/yellow_head_100.csv
+postgres_pg_admin_and_ingestion/yellow_tripdata_2021-01.csv
