@@ -62,3 +62,44 @@ docker run -it \
   --network=pg-network \
   --name pgadmin-2 \
   dpage/pgadmin4
+
+
+************
+Lesson 1.2.4
+************
+
+we converted our ipynb notebook to a script using 
+
+jupyter nbconvert --to=script Ingesting_taxi_data.ipynb 
+
+then we use argparse module from Python
+
+the cleaned script is on the github, I just corpied it here (ingest_data.py)
+
+
+N: You dropped the table. Run the postgress docker again, then connected through CLI tool to postgress, then try out the ingestion script you copied from the github repo of the course.
+
+python3 ingest_data.py \
+  --user=root \
+  --password=root \
+  --host=localhost \
+  --port=5432 \
+  --db=ny_taxi \
+  --table_name=yellow_taxi_trips \
+  --url=${URL}
+
+N: Had to add "3" to "python" command because on my system it automatically calls python2
+
+
+
+user="root"
+password="root"
+host="localhost"
+port="5432"
+db="ny_taxi"
+table_name="yellow_taxi_trips"
+url="https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2021-01.csv.gz"
+
+
+
+

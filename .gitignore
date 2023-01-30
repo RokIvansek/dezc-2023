@@ -2,4 +2,13 @@ getting-started/
 week_1/postgres_pg_admin_and_ingestion/ny_taxi_postgres_data/
 week_1/postgres_pg_admin_and_ingestion/yellow_head_100.csv
 week_1/postgres_pg_admin_and_ingestion/yellow_tripdata_2021-01.csv
+week_1/postgres_pg_admin_and_ingestion/output.csv.gz
 .ipynb_checkpoints/
+week_1/HW_week_1/green_taxi_pg_data
+week_1/HW_week_1/green_tripdata_2019-01.csv.gz
+week_1/HW_week_1/green_trip_data_2019-01_sample.csv
+week_1/HW_week_1/green_tripdata_2019-01.csv
+week_1/HW_week_1/taxi+_zone_lookup.csv
+.DS_Store
+week_1/.DS_Store
+week_1/HW_week_1/.DS_Store
